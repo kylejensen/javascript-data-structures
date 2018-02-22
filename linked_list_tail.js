@@ -104,18 +104,3 @@ SinglyLinkedList.prototype.back = function () {
     }
     return "No items in list";
 };
-
-let myList = new SinglyLinkedList();
-myList.pushFront(4);
-myList.pushFront(3);
-myList.pushFront(2);
-myList.pushFront(1);
-myList.pushBack(5);
-console.log(myList.back()); // 5
-console.log(myList.popBack()); // 5
-console.log(myList.back()); // 4
-console.log(myList.popBack()); // 4
-console.log(myList.popBack()); // 3
-console.log(myList.popBack()); // 2
-console.log(myList.back()); // 1
-console.log(myList.front()); // 1
