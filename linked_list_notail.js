@@ -108,3 +108,41 @@ SinglyLinkedList.prototype.back = function () {
     }
     return "No items in list";
 };
+
+SinglyLinkedList.prototype.insert = function (index, value) {
+    // O(N)
+    var count = 0,
+        item = this._head,
+        node = new Node(value);
+
+    while (item.next !== null && count < index - 1) {
+        item = item.next;
+        count++;
+    }
+    
+    if (count === index - 1) {
+        node.next = item.next;
+        item.next = node;
+        this._size++;
+    } else {
+        return "Index out of range! Please choose a value between 0 and " + this._size;
+    }
+};
+
+SinglyLinkedList.prototype.erase = function (index) {
+    // O(N)
+    var count = 0,
+        item = this._head;
+
+    while (item.next !== null && count < index - 1) {
+        item = item.next;
+        count++;
+    }
+    
+    if (count === index - 1) {
+        item.next = item.next.next;
+        this._size--;
+    } else {
+        return "Index out of range! Please choose a value between 0 and " + this._size;
+    }
+};
