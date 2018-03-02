@@ -115,9 +115,16 @@ SinglyLinkedList.prototype.insert = function (index, value) {
         item = this._head,
         node = new Node(value);
 
-    while (item.next !== null && count < index - 1) {
-        item = item.next;
-        count++;
+    if (index === 0) {
+        node.next = this._head
+        this._head = node;
+        this._size++;
+        return;
+    } else {
+        while (item.next !== null && count < index - 1) {
+            item = item.next;
+            count++;
+        }
     }
     
     if (count === index - 1) {
@@ -134,9 +141,15 @@ SinglyLinkedList.prototype.erase = function (index) {
     var count = 0,
         item = this._head;
 
-    while (item.next !== null && count < index - 1) {
-        item = item.next;
-        count++;
+    if (index === 0) {
+        this._head = item.next;
+        this._size--;
+        return;
+    } else {
+        while (item.next !== null && count < index - 1) {
+            item = item.next;
+            count++;
+        }
     }
     
     if (count === index - 1) {
@@ -144,5 +157,24 @@ SinglyLinkedList.prototype.erase = function (index) {
         this._size--;
     } else {
         return "Index out of range! Please choose a value between 0 and " + this._size;
+    }
+};
+
+SinglyLinkedList.prototype.removeValue = function (value) {
+    // O(N)
+    var item = this._head;
+    if (item._data === value) {
+        this._head = item.next;
+        this._size--;
+    } else {
+        while (item.next !== null && item.next._data !== value) {
+            item = item.next;
+        }
+    }
+    if (item.next === null) {
+        return "Value not in list";
+    } else {
+        item.next = item.next.next;
+        this._size--;
     }
 };
