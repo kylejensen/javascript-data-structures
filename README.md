@@ -5,3 +5,4 @@
 3. [Queue - linked list](queue.js)
 4. [Queue - fixed sized array](queue_array.js)
 5. [Stack](stack.js)
+6. [Hash Table](hashtable.js)
