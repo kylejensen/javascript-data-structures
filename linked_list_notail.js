@@ -180,6 +180,7 @@ SinglyLinkedList.prototype.removeValue = function (value) {
 };
 
 SinglyLinkedList.prototype.valueNFromEnd = function (n) {
+    // O(N)
     var listLength = 0,
         item = this._head,
         travelDistance;
@@ -207,6 +208,7 @@ SinglyLinkedList.prototype.valueNFromEnd = function (n) {
 };
 
 SinglyLinkedList.prototype.reverse = function () { 
+    // O(N)
     var currentNode = this._head,
         previousNode = null,
         nextNode = null;
