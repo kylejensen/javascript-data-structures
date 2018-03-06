@@ -1,45 +1,50 @@
-var HashTable = function () {
-    this._storage = {};
-    this._count = 0;
-    this._limit = 8;
-};
-
-HashTable.prototype.hash = function (k, m) {
-    var hash = 0,
-        len = k.length;
-    for (var i = 0; i < len; i++) {
-        var letter = k[i];
-        hash = (hash << 5) + letter.charCodeAt(0);
-        hash = (hash & hash) % m;
+class HashTable {
+    constructor() {
+        this._storage = {};
+        this._count = 0;
+        this._limit = 8;
     }
-    return hash;
-};
 
-HashTable.prototype.add = function (k, val) {
-    var hash = this.hash(k, this._limit);
-
-    this._storage[hash] = [k, val];
-    this._count++;
-};
-
-HashTable.prototype.exists = function (k) {
-    var hash = this.hash(k, this._limit);
-
-    if (this._storage[hash] && this._storage[hash][0] === k) {
-        return true;
+    hash(k, m) {
+        let hash = 0,
+            len = k.length;
+        for (let i = 0; i < len; i++) {
+            let letter = k[i];
+            hash = (hash >> 5) + letter.charCodeAt(0);
+            hash = (hash & hash) % m;
+        }
+        return hash;
     }
-    return false;
-};
 
-HashTable.prototype.get = function (k) {
-    var hash = this.hash(k, this._limit);
+    add(k, val) {
+        let hash = this.hash(k, this._limit);
+        this._storage[hash] = [k, val];
+        this._count++;
+        return;
+    }
 
-    return this._storage[hash];
-};
+    exists(k) {
+        let hash = this.hash(k, this._limit);
+        if (this._storage[hash] && this._storage[hash][0] === k) {
+            return true;
+        }
+        return false;
+    }
 
-HashTable.prototype.remove = function (k) {
-    var hash = this.hash(k, this._limit);
+    get(k) {
+        let hash = this.hash(k, this._limit);
+        if (this._storage[hash] && this._storage[hash][0] === k) {
+            return this._storage[hash]
+        }
+        return "Key not in hash table";
+    }
 
-    delete this._storage[hash];
-    return;
-};
+    remove(k) {
+        let hash = this.hash(k, this._limit);
+        if (this._storage[hash]) {
+            delete this._storage[hash];
+        }
+        this._count--;
+        return;
+    }
+}
