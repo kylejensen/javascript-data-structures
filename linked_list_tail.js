@@ -174,6 +174,9 @@ SinglyLinkedList.prototype.removeValue = function (value) {
         return "Value not in list";
     } else {
         item.next = item.next.next;
+        if (item.next === null) {
+            this._tail = item;
+        }
         this._size--;
     }
 };
