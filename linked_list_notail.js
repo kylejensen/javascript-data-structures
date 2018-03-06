@@ -178,3 +178,45 @@ SinglyLinkedList.prototype.removeValue = function (value) {
         this._size--;
     }
 };
+
+SinglyLinkedList.prototype.valueNFromEnd = function (n) {
+    var listLength = 0,
+        item = this._head,
+        travelDistance;
+
+    while (item.next) {
+        item = item.next;
+        listLength++;
+    }
+
+    if (n > listLength) {
+        return "Out of bounds";
+    } else if (n === 0) {
+        return item._data;
+    }
+
+    travelDistance = listLength - n;
+    item = this._head;
+
+    while (travelDistance !== 0) {
+        item = item.next;
+        travelDistance--;
+    }
+
+    return item._data;
+};
+
+SinglyLinkedList.prototype.reverse = function () { 
+    var currentNode = this._head,
+        previousNode = null,
+        nextNode = null;
+
+    while (currentNode) {
+        nextNode = currentNode.next;
+        currentNode.next = previousNode;
+        previousNode = currentNode;
+        currentNode = nextNode;
+    }
+
+    this._head = previousNode;
+};
