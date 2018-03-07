@@ -6,3 +6,8 @@
 4. [Queue - fixed sized array](queue_array.js)
 5. [Stack](stack.js)
 6. [Hash Table](hashtable.js)
+
+
+## TODO:
+- Convert code to es6
+- Add method to handle collisions to hash table
