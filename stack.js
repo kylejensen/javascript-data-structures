@@ -1,38 +1,41 @@
-var Stack = function () {
-    this._size = 0;
-    this._storage = {};
-};
-
-Stack.prototype.push = function (data) {
-    this._size++;
-    this._storage[this._size] = data;
-};
-
-Stack.prototype.pop = function () {
-    var size = this._size,
-        deleted;
-
-    if (size > 0) {
-        deleted = this._storage[size];
-        delete this._storage[size];
-        this._size--;
-
-        return deleted;
+class Stack {
+    constructor() {
+        this._size = 0;
+        this._storage = {};
     }
-    return "Underflow!";
-};
 
-Stack.prototype.peek = function () {
-    if (this._size > 0) {
-        return this._storage[this._size];
+    push(data) {
+        this._size++;
+        this._storage[this._size] = data;
     }
-    return "Stack empty";
-};
 
-Stack.prototype.isEmpty = function () {
-    return this._size === 0;
-};
+    pop() {
+        let size = this._size,
+            deleted;
+        
+        if (size > 0) {
+            deleted = this._storage[size];
+            delete this._storage[size];
+            this._size--;
 
-Stack.prototype.size = function () {
-    return this._size;
-};
+            return deleted;
+        }
+
+        return 'Underflow!';
+    }
+
+    peek() {
+        if (this._size > 0) {
+            return this._storage[this._size];
+        }
+        return "Stack empty";
+    }
+
+    isEmpty() {
+        return this._size === 0;
+    }
+
+    size() {
+        return this._size;
+    }
+}
