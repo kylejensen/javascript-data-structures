@@ -6,6 +6,7 @@
 4. [Queue - fixed sized array](queue_array.js)
 5. [Stack](stack.js)
 6. [Hash Table](hashtable.js)
+7. [Binary Search Tree](binarysearchtree.js)
 
 
 ## TODO:
