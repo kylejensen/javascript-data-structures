@@ -90,4 +90,38 @@ class BST {
             return searchTree(this.root);
         }
     }
+
+    findMinHeight(node = this.root) {
+        if (node === null) {
+            return -1;
+        } else {
+            let left = this.findMinHeight(node.left),
+                right = this.findMinHeight(node.right);
+
+            if (left < right) {
+                return left + 1;
+            } else {
+                return right + 1;
+            }
+        }
+    }
+
+    findMaxHeight(node = this.root) {
+        if (node === null) {
+            return -1;
+        } else {
+            let left = this.findMaxHeight(node.left),
+                right = this.findMaxHeight(node.right);
+
+            if (left > right) {
+                return left + 1;
+            } else {
+                return right + 1;
+            }
+        }
+    }
+
+    isBalanced() {
+        return (this.findMinHeight() >= this.findMaxHeight() - 1);
+    }
 }
