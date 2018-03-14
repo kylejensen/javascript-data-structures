@@ -124,4 +124,52 @@ class BST {
     isBalanced() {
         return (this.findMinHeight() >= this.findMaxHeight() - 1);
     }
+
+    inOrder() {
+        if (this.root === null) {
+            return null;
+        }
+
+        let result = [];
+        let traverseInOrder = (node) => {
+            node.left && traverseInOrder(node.left);
+            result.push(node.data);
+            node.right && traverseInOrder(node.right);
+        }
+        
+        traverseInOrder(this.root);
+        return result;
+    }
+
+    preOrder() {
+        if (this.root === null) {
+            return null;
+        }
+
+        let result = [];
+        let traversePreOrder = (node) => {
+            result.push(node.data);
+            node.left && traversePreOrder(node.left);
+            node.right && traversePreOrder(node.right);
+        }
+        
+        traversePreOrder(this.root);
+        return result;
+    }
+
+    postOrder() {
+        if (this.root === null) {
+            return null;
+        }
+
+        let result = [];
+        let traversePostOrder = (node) => {
+            node.left && traversePostOrder(node.left);
+            node.right && traversePostOrder(node.right);
+            result.push(node.data);
+        }
+        
+        traversePostOrder(this.root);
+        return result;
+    }
 }
