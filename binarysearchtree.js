@@ -234,4 +234,22 @@ class BST {
 
         this.root = removeNode(this.root, data);
     }
+
+    invert(node = this.root) {
+        if (node === null) {
+            return null;
+        }
+
+        let tmp = node.left;
+        node.left = node.right;
+        node.right = tmp;
+
+        if (node.left !== null) {
+            this.invert(node.left);
+        }
+        if (node.right !== null) {
+            this.invert(node.right);
+        }
+        return node;
+    }
 }
