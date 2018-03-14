@@ -24,7 +24,7 @@ class SinglyLinkedList {
     valueAt(index) {
         // O(N)
         let item = this._head,
-        count = 0;
+            count = 0;
 
         while (item.next !== null && count !== index) {
             item = item.next; 
@@ -40,6 +40,7 @@ class SinglyLinkedList {
     pushFront(data) {
         // O(1)
         let node = new Node(data);
+
         if (this._size === 0) {
             this._head = node;
         } else {
@@ -63,6 +64,7 @@ class SinglyLinkedList {
     pushBack(data) {
         // O(N)
         let node = new Node(data);
+        
         if (this._head === null) {
             this._head = node;
         } else {

@@ -10,5 +10,4 @@
 
 
 ## TODO:
-- Convert code to es6
 - Add method to handle collisions to hash table
