@@ -1,32 +1,34 @@
-var Queue = function (size) {
-    this._collection = [];
-    this._size = 0;
-    this._capacity = size;
-};
-
-Queue.prototype.enqueue = function (value) {
-    if (this._size < this._capacity) {
-        this._collection.push(value);
-        this._size++;
-    } else {
-        return "Overflow!";
+class Queue {
+    constructor(size = 0) {
+        this._collection = [];
+        this._size = 0;
+        this._capacity = size;
     }
-};
 
-Queue.prototype.dequeue = function () {
-    if (this._size === 0) {
-        return "Underflow!";
-    } else {
-        var item = this._collection.shift();
-        this._size--;
-        return item;
+    enqueue(value) {
+        if (this._size < this._capacity) {
+            this._collection.push(value);
+            this._size++;
+        } else {
+            return "Overflow!";
+        }
     }
-};
 
-Queue.prototype.empty = function () {
-    return this._size === 0;
-};
+    dequeue() {
+        if (this._size === 0) {
+            return "Underflow!";
+        } else {
+            let item = this._collection.shift();
+            this._size--;
+            return item;
+        }
+    }
 
-Queue.prototype.full = function () {
-    return this._size === this._capacity;
-};
+    empty() {
+        return this._size === 0;
+    }
+
+    capacity() {
+        return this._size === this._capacity;
+    }
+}
